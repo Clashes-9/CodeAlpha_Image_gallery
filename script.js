@@ -1,7 +1,6 @@
 /* =========================================================
    Aperture — vanilla JS gallery + lightbox
-   No external images: every tile is a generated gradient
-   "field study", tuned per category to the Lumio palette.
+  Local image gallery with generated gradients as a fallback.
    ========================================================= */
 
 // ---- 1. Data -------------------------------------------------
@@ -16,8 +15,7 @@ const PALETTES = {
   travel:       ["#ff7a3d", "#ff4d8d", "#ff2f7e", "#ffd166"],
 };
 
-// To use a real photo instead of generated artwork for any item,
-// just add an "img" field pointing at a file in the images/ folder,
+// Each real photo uses an "img" field pointing at a file in the images/ folder,
 // e.g. { title: "Canopy Drift", category: "nature", img: "images/nature-1.jpg" }
 // Leave "img" out (or set it to null) to keep the generated gradient.
 const IMAGES = [
@@ -25,18 +23,18 @@ const IMAGES = [
   { title: "Moss Signal",        category: "nature",       img: "images/nature-2.jpg" },
   { title: "River Glass",        category: "nature",       img: "images/nature-3.jpg" },
   { title: "Fern Static",        category: "nature",       img: "images/nature-4.jpg" },
-  { title: "Glass Spire",        category: "architecture", img: null },
-  { title: "Concrete Fold",      category: "architecture", img: null },
-  { title: "Atrium Light",       category: "architecture", img: null },
-  { title: "Stairwell Echo",     category: "architecture", img: null },
-  { title: "Feather Study",      category: "animals",      img: null },
-  { title: "Den & Dust",         category: "animals",      img: null },
-  { title: "Coral Wander",       category: "animals",      img: null },
-  { title: "Amber Pride",        category: "animals",      img: null },
-  { title: "Departure Gate",     category: "travel",       img: null },
-  { title: "Coastal Route",      category: "travel",       img: null },
-  { title: "Market Hour",        category: "travel",       img: null },
-  { title: "Dune Line",          category: "travel",       img: null },
+  { title: "Glass Spire",        category: "architecture", img: "images/architecture-1.jpg" },
+  { title: "Concrete Fold",      category: "architecture", img: "images/architecture-2.jpg" },
+  { title: "Atrium Light",       category: "architecture", img: "images/architecture-3.jpg" },
+  { title: "Stairwell Echo",     category: "architecture", img: "images/architecture-4.jpg" },
+  { title: "Feather Study",      category: "animals",      img: "images/animals-1.jpg" },
+  { title: "Den & Dust",         category: "animals",      img: "images/animals-2.jpg" },
+  { title: "Coral Wander",       category: "animals",      img: "images/animals-3.jpg" },
+  { title: "Amber Pride",        category: "animals",      img: "images/animals-4.jpg" },
+  { title: "Departure Gate",     category: "travel",       img: "images/travel-1.jpg" },
+  { title: "Coastal Route",      category: "travel",       img: "images/travel-2.jpg" },
+  { title: "Market Hour",        category: "travel",       img: "images/travel-3.jpg" },
+  { title: "Dune Line",          category: "travel",       img: "images/travel-4.jpg" },
 ];
 
 // ---- 2. Deterministic "random" so the layout is stable ------
